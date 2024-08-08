@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:islami/model/hadeth_model.dart';
+
+class HadithTab extends StatefulWidget {
+  HadithTab({super.key});
+
+  @override
+  State<HadithTab> createState() => _HadithTabState();
+}
+
+class _HadithTabState extends State<HadithTab> {
+  @override
+  Widget build(BuildContext context) {
+    if (ahadethList.isEmpty) {
+      loadFile();
+    }
+    return Column(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Image.asset(
+            "assets/images/ahadeth_image.png",
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Container(
+          alignment: Alignment.center,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: BorderDirectional(
+              top: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+                width: 3,
+              ),
+              bottom: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+                width: 3,
+              ),
+            ),
+          ),
+          child: Text(
+            "Alahadath",
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: ahadethList.isEmpty
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : ListView.separated(
+                  itemBuilder: (context, index) => Text(
+                        ahadethList[index].title,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                  separatorBuilder: (context, index) => const Divider(),
+                  itemCount: ahadethList.length),
+        )
+      ],
+    );
+  }
+
+  List<HadethModel> ahadethList = [];
+
+  loadFile() async {
+    String content = await rootBundle.loadString("assets/files/ahadeth.txt");
+    List<String> ahadeth = content.split("#");
+    for (var i = 0; i < ahadeth.length; i++) {
+      List<String> oneHadethContent = ahadeth[i].trim().split("\n");
+      String hadethTitle = oneHadethContent[0];
+      oneHadethContent.removeAt(0);
+      String hadethContent = oneHadethContent.join("\n");
+      print(hadethTitle);
+      print(hadethContent);
+      ahadethList.add(HadethModel(title: hadethTitle, content: hadethContent));
+    }
+  }
+}
