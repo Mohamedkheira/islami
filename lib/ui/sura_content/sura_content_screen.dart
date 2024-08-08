@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/ui/sura_content/sura_content_item.dart';
+import 'package:islami_app/ui/sura_content/sura_content_item.dart';
 
 class SuraContentScreen extends StatefulWidget {
   static const String routeName = "SuraContentScreen";
