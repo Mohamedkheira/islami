@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/model/hadeth_model.dart';
+import 'package:islami_app/model/hadeth_model.dart';
+import 'package:islami_app/resoble_conponan/ahadeth_item.dart';
 
 class HadithTab extends StatefulWidget {
   HadithTab({super.key});
@@ -53,13 +54,10 @@ class _HadithTabState extends State<HadithTab> {
                   child: CircularProgressIndicator(),
                 )
               : ListView.separated(
-                  itemBuilder: (context, index) => Text(
-                        ahadethList[index].title,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
+                  itemBuilder: (context, index) => AhadethItem(hadeth: ahadethList[index],),
                   separatorBuilder: (context, index) => const Divider(),
                   itemCount: ahadethList.length),
-        )
+        ),
       ],
     );
   }
