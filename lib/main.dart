@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-       cardTheme: CardTheme(
+       cardTheme: const CardTheme(
          color: Colors.white,
          surfaceTintColor: Colors.white,
          elevation: 10,
@@ -78,8 +78,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         HomeScreen.routeName:(_) => const HomeScreen(),
-        SuraContentScreen.routeName:(_)=> SuraContentScreen(),
-        HadithScreen.routeName:(_)=>HadithScreen(),
+        SuraContentScreen.routeName:(_)=> const SuraContentScreen(),
+        HadithScreen.routeName:(_)=>const HadithScreen(),
       },
       initialRoute: HomeScreen.routeName,
     );
