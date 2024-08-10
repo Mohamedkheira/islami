@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/model/hadeth_model.dart';
+import 'package:islami_app/style/app_style.dart';
 
 class HadithScreen extends StatelessWidget {
   static const String routeName = "HadithScreen";
@@ -9,21 +10,23 @@ class HadithScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     HadethModel args = ModalRoute.of(context)?.settings.arguments as HadethModel;
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage(AppStyle.isDark
+              ? "assets/images/background_dark.png"
+              : "assets/images/background.png"),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Islami",
-            style: Theme.of(context).textTheme.headlineSmall,
           ),
+          iconTheme: Theme.of(context).iconTheme,
         ),
         body: Card(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(

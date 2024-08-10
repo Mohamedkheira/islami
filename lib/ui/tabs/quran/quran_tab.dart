@@ -37,11 +37,11 @@ class QuranTab extends StatelessWidget {
           decoration: BoxDecoration(
             border: BorderDirectional(
               top: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
                 width: 3,
               ),
               bottom: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
                 width: 3,
               ),
             ),
@@ -58,7 +58,7 @@ class QuranTab extends StatelessWidget {
                 ),
                 Container(
                   width: 3,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
                 Expanded(
                   child: Text(
