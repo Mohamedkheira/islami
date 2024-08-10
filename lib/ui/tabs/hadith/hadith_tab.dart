@@ -33,7 +33,7 @@ class _HadithTabState extends State<HadithTab> {
           decoration: BoxDecoration(
             border: BorderDirectional(
               top: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
                 width: 3,
               ),
               bottom: BorderSide(
@@ -72,8 +72,6 @@ class _HadithTabState extends State<HadithTab> {
       String hadethTitle = oneHadethContent[0];
       oneHadethContent.removeAt(0);
       String hadethContent = oneHadethContent.join("\n");
-      print(hadethTitle);
-      print(hadethContent);
       ahadethList.add(HadethModel(title: hadethTitle, content: hadethContent));
     }
   }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/style/app_style.dart';
 import 'package:islami_app/ui/tabs/hadith/hadith_tab.dart';
 import 'package:islami_app/ui/tabs/radio/radio_tab.dart';
 import 'package:islami_app/ui/tabs/sebha/sebha_tab.dart';
+import 'package:islami_app/ui/tabs/settings/settings_tab.dart';
 
 import '../tabs/quran/quran_tab.dart';
-
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
@@ -21,23 +22,25 @@ class _HomeScreenState extends State<HomeScreen> {
     HadithTab(),
     const SebhaTab(),
     const RadioTab(),
+    const SettingsTab(),
   ];
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage(AppStyle.isDark
+              ? "assets/images/background_dark.png"
+              : "assets/images/background.png"),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Islami",
-            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -83,6 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               label: "Radio",
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              icon: const Icon(
+                Icons.settings,
+              ),
+              label: "Settings",
             ),
           ],
         ),
