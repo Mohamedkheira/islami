@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/model/hadeth_model.dart';
+import 'package:islami_app/model/hadeth_model.dart';
+import 'package:islami_app/resoble_conponan/ahadeth_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadithTab extends StatefulWidget {
   HadithTab({super.key});
@@ -32,7 +34,7 @@ class _HadithTabState extends State<HadithTab> {
           decoration: BoxDecoration(
             border: BorderDirectional(
               top: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
                 width: 3,
               ),
               bottom: BorderSide(
@@ -42,7 +44,7 @@ class _HadithTabState extends State<HadithTab> {
             ),
           ),
           child: Text(
-            "Alahadath",
+            AppLocalizations.of(context)!.alahadith,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
@@ -53,19 +55,15 @@ class _HadithTabState extends State<HadithTab> {
                   child: CircularProgressIndicator(),
                 )
               : ListView.separated(
-                  itemBuilder: (context, index) => Text(
-                        ahadethList[index].title,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
+                  itemBuilder: (context, index) => AhadethItem(hadeth: ahadethList[index],),
                   separatorBuilder: (context, index) => const Divider(),
                   itemCount: ahadethList.length),
-        )
+        ),
       ],
     );
   }
 
   List<HadethModel> ahadethList = [];
-
   loadFile() async {
     String content = await rootBundle.loadString("assets/files/ahadeth.txt");
     List<String> ahadeth = content.split("#");
@@ -74,9 +72,10 @@ class _HadithTabState extends State<HadithTab> {
       String hadethTitle = oneHadethContent[0];
       oneHadethContent.removeAt(0);
       String hadethContent = oneHadethContent.join("\n");
-      print(hadethTitle);
-      print(hadethContent);
       ahadethList.add(HadethModel(title: hadethTitle, content: hadethContent));
     }
+    setState(() {
+
+    });
   }
 }

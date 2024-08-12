@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/sura_content/sura_content_screen.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:islami_app/style/app_style.dart';
+import 'package:islami_app/ui/hadith_screen/hadith_screen.dart';
+import 'package:islami_app/ui/sura_content/sura_content_screen.dart';
 import 'ui/home_screen/home_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
- Color primaryLightcolor = const Color(0xffB7935F);
+
   MyApp({super.key});
 
   // This widget is the root of your application.
@@ -16,68 +19,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-       cardTheme: CardTheme(
-         color: Colors.white,
-         surfaceTintColor: Colors.white,
-         elevation: 10,
-       ),
-        textTheme: const TextTheme(
-          headlineSmall:  TextStyle(
-            fontFamily: "ElMessiri",
-            fontSize: 30,
-          ),
-          headlineMedium: TextStyle(
-            fontFamily: "ElMessiri",
-            fontSize: 25,
-          ),
-          bodyMedium: TextStyle(
-            fontFamily: "KOUFIBD",
-            fontSize: 25,
-            fontWeight: FontWeight.bold
-          ),
-          bodyLarge: TextStyle(
-              fontFamily: "DTHULUTH",
-              fontSize: 20,
-            color: Colors.black
-          ),
-        ),
-        dividerTheme: DividerThemeData(
-          color: primaryLightcolor,
-          thickness: 3,
-          space: 0,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.white,
-          selectedIconTheme: IconThemeData(
-            size: 40,
-          ),
-          unselectedIconTheme: IconThemeData(
-            size: 40,
-          ),
-        ),
-        scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(
-          color: Colors.transparent,
-          titleTextStyle: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff242424),
-          ),
-          centerTitle: true,
-        ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: primaryLightcolor,
-          primary: primaryLightcolor,
-          onPrimary: const Color(0xff707070),
-          secondary: primaryLightcolor.withOpacity(0.57),
-        ),
-        useMaterial3: true,
-      ),
+      localizationsDelegates:const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales:const [
+        Locale('en'),
+        Locale('ar'),
+      ],
+      locale: const Locale("ar"),
+      darkTheme: AppStyle.darkTheme,
+      theme: AppStyle.lightTheme,
+      themeMode: AppStyle.isDark? ThemeMode.dark : ThemeMode.light,
       routes: {
         HomeScreen.routeName:(_) => const HomeScreen(),
-        SuraContentScreen.routeName:(_)=> SuraContentScreen(),
+        SuraContentScreen.routeName:(_)=> const SuraContentScreen(),
+        HadithScreen.routeName:(_)=>const HadithScreen(),
       },
       initialRoute: HomeScreen.routeName,
     );

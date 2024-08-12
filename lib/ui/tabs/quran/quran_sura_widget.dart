@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/sura_content/sura_content_screen.dart';
+import 'package:islami_app/ui/sura_content/sura_content_screen.dart';
 
 class QuranSuraWidget extends StatelessWidget {
   String suraNames;
@@ -28,7 +28,7 @@ class QuranSuraWidget extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium,
             )),
             Container(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
               width: 3,
             ),
             Expanded(

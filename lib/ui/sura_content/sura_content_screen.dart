@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/ui/sura_content/sura_content_item.dart';
+import 'package:islami_app/style/app_style.dart';
+import 'package:islami_app/ui/sura_content/sura_content_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SuraContentScreen extends StatefulWidget {
   static const String routeName = "SuraContentScreen";
@@ -20,21 +22,23 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
       loadFile(args.index);
     }
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage(AppStyle.isDark
+              ? "assets/images/background_dark.png"
+              : "assets/images/background.png"),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Islami",
-            style: Theme.of(context).textTheme.headlineSmall,
+            AppLocalizations.of(context)!.islami,
           ),
+          iconTheme: Theme.of(context).iconTheme,
         ),
         body: Card(
-          margin: EdgeInsets.all(20),
+          margin:  const EdgeInsets.all(20),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
@@ -45,14 +49,15 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
                     Text(
                       args.suraNames,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(
                       width: 26,
                     ),
-                    const Icon(
+                    Icon(
                       Icons.play_circle,
                       size: 27,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
                   ],
                 ),

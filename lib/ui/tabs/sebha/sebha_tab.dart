@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -9,8 +12,13 @@ class SebhaTab extends StatefulWidget {
 
 class _SebhaTabState extends State<SebhaTab> {
   int count = 0;
+  int index = 0;
+  double angle = 0;
 
-  List<String> tasbeh = ['Sobhan Allah', 'Alhamd llah', 'Allah Akber'];
+  List<String> tasbeh = ['سبحان الله',
+    'الحمد لله',
+    'الله أكبر',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +33,22 @@ class _SebhaTabState extends State<SebhaTab> {
               children: [
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
-                    start: 60,
+                    end: 56,
+
                   ),
-                  child: Image.asset("assets/images/head_sebha.png"),
+                  child: Image.asset("assets/images/head of seb7a.png"),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 80),
-                  child: Image.asset("assets/images/sebha.png"),
+                GestureDetector(
+                  onTap: () {
+                    counterMethod();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 39),
+                    child: Transform.rotate(
+                      angle: angle,
+
+                        child: Image.asset("assets/images/body of seb7a.png")),
+                  ),
                 ),
               ],
             ),
@@ -39,28 +56,27 @@ class _SebhaTabState extends State<SebhaTab> {
               height: 41,
             ),
             Text(
-              "Number of permits",
-              style: Theme.of(context).textTheme.bodyMedium,
+              AppLocalizations.of(context)!.number_of_permits,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .bodyMedium,
             ),
             const SizedBox(
               height: 34,
             ),
-            InkWell(
-              onTap: () {
-                setState(() {
-                  number();
-                });
-              },
-              child: Container(
-                padding: const EdgeInsetsDirectional.symmetric(
-                    horizontal: 20, vertical: 24),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
-                  borderRadius: BorderRadiusDirectional.circular(15),
-                ),
-                child: Text(
-                  count.toString(),
-                ),
+            Container(
+              padding: const EdgeInsetsDirectional.symmetric(
+                  horizontal: 20, vertical: 24),
+              decoration: BoxDecoration(
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .secondary,
+                borderRadius: BorderRadiusDirectional.circular(15),
+              ),
+              child: Text(
+                count.toString(),
               ),
             ),
             const SizedBox(
@@ -70,12 +86,18 @@ class _SebhaTabState extends State<SebhaTab> {
               padding: const EdgeInsetsDirectional.symmetric(
                   horizontal: 16, vertical: 9),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .secondary,
                 borderRadius: BorderRadiusDirectional.circular(15),
               ),
               child: Text(
-                'Sobhan Allah',
-                style: Theme.of(context).textTheme.bodyMedium,
+                tasbeh[index],
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .bodyMedium,
               ),
             ),
           ],
@@ -84,16 +106,19 @@ class _SebhaTabState extends State<SebhaTab> {
     );
   }
 
-  reset() {
-    count = 0;
-  }
-
-  // not complete the logic
-  number() {
+  counterMethod() {
     setState(() {
-      count++;
+      angle += 10;
       if (count == 33) {
-        reset();
+        count = 0;
+        if (index < tasbeh.length - 1) {
+          index++;
+        } else {
+          index = 0;
+        }
+      }
+      else {
+        count++;
       }
     });
   }
