@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/style/app_style.dart';
 import 'package:islami_app/ui/sura_content/sura_content_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SuraContentScreen extends StatefulWidget {
   static const String routeName = "SuraContentScreen";
@@ -31,8 +32,8 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "Islami",
+          title: Text(
+            AppLocalizations.of(context)!.islami,
           ),
           iconTheme: Theme.of(context).iconTheme,
         ),

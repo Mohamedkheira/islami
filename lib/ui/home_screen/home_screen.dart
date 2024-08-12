@@ -4,6 +4,7 @@ import 'package:islami_app/ui/tabs/hadith/hadith_tab.dart';
 import 'package:islami_app/ui/tabs/radio/radio_tab.dart';
 import 'package:islami_app/ui/tabs/sebha/sebha_tab.dart';
 import 'package:islami_app/ui/tabs/settings/settings_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../tabs/quran/quran_tab.dart';
 
@@ -39,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "Islami",
+          title: Text(
+            AppLocalizations.of(context)!.islami,
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "assets/images/moshaf_icon.png",
                 ),
               ),
-              label: "Quran",
+              label: AppLocalizations.of(context)!.quran,
             ),
             BottomNavigationBarItem(
               backgroundColor: Theme.of(context).colorScheme.primary,
@@ -67,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "assets/images/hadith_icon.png",
                 ),
               ),
-              label: "Hadith",
+              label: AppLocalizations.of(context)!.hadith,
             ),
             BottomNavigationBarItem(
               backgroundColor: Theme.of(context).colorScheme.primary,
@@ -76,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "assets/images/sebha_icon.png",
                 ),
               ),
-              label: "Sebha",
+              label: AppLocalizations.of(context)!.sebha,
             ),
             BottomNavigationBarItem(
               backgroundColor: Theme.of(context).colorScheme.primary,
@@ -85,14 +86,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   "assets/images/radio_icon.png",
                 ),
               ),
-              label: "Radio",
+              label: AppLocalizations.of(context)!.radio,
             ),
             BottomNavigationBarItem(
               backgroundColor: Theme.of(context).colorScheme.primary,
               icon: const Icon(
                 Icons.settings,
               ),
-              label: "Settings",
+              label: AppLocalizations.of(context)!.settings,
             ),
           ],
         ),

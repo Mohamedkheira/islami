@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/resoble_conponan/Langauge_sheet.dart';
 import 'package:islami_app/resoble_conponan/mode_sheet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({super.key});
@@ -18,7 +19,7 @@ class _SettingsTabState extends State<SettingsTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Language",
+            AppLocalizations.of(context)!.language,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(
@@ -57,7 +58,7 @@ class _SettingsTabState extends State<SettingsTab> {
             height: 19,
           ),
           Text(
-            "Theme",
+            AppLocalizations.of(context)!.theme,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(
