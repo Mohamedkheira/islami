@@ -36,7 +36,7 @@ class _SebhaTabState extends State<SebhaTab> {
                     end: 56,
 
                   ),
-                  child: Image.asset("assets/images/head of seb7a.png"),
+                  child: Image.asset("assets/images6/head of seb7a.png"),
                 ),
                 GestureDetector(
                   onTap: () {
