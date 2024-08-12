@@ -1,0 +1,14 @@
+{
+  "islami":"إسلامي",
+  "alahadith" : "الأحاديث",
+  "radio": "راديو",
+  "sebha": "سبحة",
+  "hadith" : "حديث",
+  "quran" : "قرآن",
+  "sura_name":"أسم السورة",
+  "number_verses":"عدد الأيات",
+  "number_of_permits":"عدد التسبيحات",
+  "settings":"أعدادات",
+  "language":"الغة",
+  "theme":"لون"
+}

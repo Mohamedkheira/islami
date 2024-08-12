@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/model/hadeth_model.dart';
 import 'package:islami_app/resoble_conponan/ahadeth_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadithTab extends StatefulWidget {
   HadithTab({super.key});
@@ -43,7 +44,7 @@ class _HadithTabState extends State<HadithTab> {
             ),
           ),
           child: Text(
-            "Alahadath",
+            AppLocalizations.of(context)!.alahadith,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
@@ -63,7 +64,6 @@ class _HadithTabState extends State<HadithTab> {
   }
 
   List<HadethModel> ahadethList = [];
-
   loadFile() async {
     String content = await rootBundle.loadString("assets/files/ahadeth.txt");
     List<String> ahadeth = content.split("#");
@@ -74,5 +74,8 @@ class _HadithTabState extends State<HadithTab> {
       String hadethContent = oneHadethContent.join("\n");
       ahadethList.add(HadethModel(title: hadethTitle, content: hadethContent));
     }
+    setState(() {
+
+    });
   }
 }

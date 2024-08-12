@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -14,7 +15,10 @@ class _SebhaTabState extends State<SebhaTab> {
   int index = 0;
   double angle = 0;
 
-  List<String> tasbeh = ['Sobhan Allah', 'Alhamd llah', 'Allah Akber'];
+  List<String> tasbeh = ['سبحان الله',
+    'الحمد لله',
+    'الله أكبر',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,8 @@ class _SebhaTabState extends State<SebhaTab> {
               children: [
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
-                    start: 60,
+                    end: 56,
+
                   ),
                   child: Image.asset("assets/images/head of seb7a.png"),
                 ),
@@ -38,7 +43,7 @@ class _SebhaTabState extends State<SebhaTab> {
                     counterMethod();
                   },
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 36),
+                    padding: const EdgeInsets.only(top: 39),
                     child: Transform.rotate(
                       angle: angle,
 
@@ -51,7 +56,7 @@ class _SebhaTabState extends State<SebhaTab> {
               height: 41,
             ),
             Text(
-              "Number of permits",
+              AppLocalizations.of(context)!.number_of_permits,
               style: Theme
                   .of(context)
                   .textTheme

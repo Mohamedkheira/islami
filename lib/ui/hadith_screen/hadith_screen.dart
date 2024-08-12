@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/model/hadeth_model.dart';
 import 'package:islami_app/style/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadithScreen extends StatelessWidget {
   static const String routeName = "HadithScreen";
@@ -20,8 +21,8 @@ class HadithScreen extends StatelessWidget {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "Islami",
+          title: Text(
+            AppLocalizations.of(context)!.islami,
           ),
           iconTheme: Theme.of(context).iconTheme,
         ),
