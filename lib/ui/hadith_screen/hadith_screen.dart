@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/model/hadeth_model.dart';
+import 'package:islami_app/model/settings_provider.dart';
 import 'package:islami_app/style/app_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class HadithScreen extends StatelessWidget {
   static const String routeName = "HadithScreen";
@@ -9,14 +11,13 @@ class HadithScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
     HadethModel args = ModalRoute.of(context)?.settings.arguments as HadethModel;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(AppStyle.isDark
-              ? "assets/images/background_dark.png"
-              : "assets/images/background.png"),
+          image: AssetImage(provider.ChooseBackground()),
         ),
       ),
       child: Scaffold(

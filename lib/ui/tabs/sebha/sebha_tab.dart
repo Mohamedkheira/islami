@@ -33,10 +33,10 @@ class _SebhaTabState extends State<SebhaTab> {
               children: [
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
-                    end: 56,
+                    end: 35,
 
                   ),
-                  child: Image.asset("assets/images6/head of seb7a.png"),
+                  child: Image.asset("assets/images/head of seb7a.png"),
                 ),
                 GestureDetector(
                   onTap: () {

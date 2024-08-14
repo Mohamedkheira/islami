@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_app/model/settings_provider.dart';
 import 'package:islami_app/style/app_style.dart';
 import 'package:islami_app/ui/sura_content/sura_content_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SuraContentScreen extends StatefulWidget {
   static const String routeName = "SuraContentScreen";
@@ -16,6 +18,7 @@ class SuraContentScreen extends StatefulWidget {
 class _SuraContentScreenState extends State<SuraContentScreen> {
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
     SuraContentArgs args =
         ModalRoute.of(context)?.settings.arguments as SuraContentArgs;
     if(verses.isEmpty){
@@ -25,9 +28,7 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(AppStyle.isDark
-              ? "assets/images/background_dark.png"
-              : "assets/images/background.png"),
+          image: AssetImage(provider.ChooseBackground()),
         ),
       ),
       child: Scaffold(
