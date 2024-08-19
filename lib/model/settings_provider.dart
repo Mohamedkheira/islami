@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../resoble_conponan/shared_prefrances.dart';
+
 class SettingsProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
 
   ChangeThemeMode(ThemeMode newTheme) {
     if (newTheme == themeMode) return;
     themeMode = newTheme;
+    SharedPref.setTheme(themeMode);
     notifyListeners();
   }
 
@@ -25,6 +28,13 @@ class SettingsProvider extends ChangeNotifier {
   ChangeSlectedLanguage(String newLanguage){
     if(slectedLanguage== newLanguage) return;
     slectedLanguage = newLanguage;
+    SharedPref.setLanguage(slectedLanguage);
+    notifyListeners();
+  }
+
+  init(){
+    themeMode = SharedPref.getTheme();
+    slectedLanguage = SharedPref.getLanguage();
     notifyListeners();
   }
 }
