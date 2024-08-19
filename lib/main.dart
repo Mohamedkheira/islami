@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami_app/model/settings_provider.dart';
+import 'package:islami_app/resoble_conponan/shared_prefrances.dart';
 import 'package:islami_app/style/app_style.dart';
 import 'package:islami_app/ui/hadith_screen/hadith_screen.dart';
 import 'package:islami_app/ui/sura_content/sura_content_screen.dart';
@@ -8,9 +9,13 @@ import 'package:provider/provider.dart';
 import 'ui/home_screen/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPref.init();
+
   runApp(ChangeNotifierProvider(
-      create: (context)=>SettingsProvider(),
+      create: (context)=>SettingsProvider()..init(),
       child: const MyApp()));
 }
 
