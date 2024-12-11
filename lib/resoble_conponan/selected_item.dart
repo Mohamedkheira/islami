@@ -9,7 +9,7 @@ class SelectedItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(value,style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.primary)),
+        Text(value,style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.onPrimaryContainer)),
         Icon(
           Icons.check,
           color: Theme.of(context).colorScheme.onPrimaryContainer,

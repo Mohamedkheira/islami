@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/model/settings_provider.dart';
 import 'package:islami_app/resoble_conponan/Langauge_sheet.dart';
 import 'package:islami_app/resoble_conponan/mode_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({super.key});
@@ -13,6 +15,7 @@ class SettingsTab extends StatefulWidget {
 class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(38.0),
       child: Column(
@@ -44,7 +47,7 @@ class _SettingsTabState extends State<SettingsTab> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "English",
+                      provider.slectedLanguage=="en"?"English": "العربية" ,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(color:Theme.of(context).colorScheme.primary),
                     ),
                     Icon(Icons.arrow_drop_down,
@@ -75,7 +78,7 @@ class _SettingsTabState extends State<SettingsTab> {
                 color: Colors.white,
                 border: Border.all(
                   width: 4,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               child:
@@ -83,7 +86,7 @@ class _SettingsTabState extends State<SettingsTab> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Light",
+                    provider.themeMode==ThemeMode.light?"Light":"Dark",
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(color:Theme.of(context).colorScheme.primary),
                   ),
                   Icon(Icons.arrow_drop_down,

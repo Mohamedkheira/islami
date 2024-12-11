@@ -38,7 +38,7 @@ class _HadithTabState extends State<HadithTab> {
                 width: 3,
               ),
               bottom: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
                 width: 3,
               ),
             ),

@@ -33,7 +33,7 @@ class _SebhaTabState extends State<SebhaTab> {
               children: [
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
-                    end: 56,
+                    start: 35,
 
                   ),
                   child: Image.asset("assets/images/head of seb7a.png"),
